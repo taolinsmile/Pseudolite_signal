@@ -1,0 +1,19 @@
+% 参照 <北斗伪卫星信号远近效应干扰消除技术研究-吴迪>
+% P25,B1I测距码功率谱密度
+
+clear all; close all; clc;
+n = 11;
+N = 2^n - 2;
+m = [-100:-1,1:100];
+len1 = length(m);
+fc = 2.046e6; Tc = 1/fc;
+ww = -10e3:1:10e3;
+ln2 = length(ww);
+
+sinc
+dirac
+sw = zeros(1,len2)
+for i=1:len2
+    w = ww(i);
+    sw(i) = dirac(w) + sum((N+1)*(sinc(m*pi/N).^2).*dirac(w+2*m*pi/N/Tc));
+end
