@@ -1,5 +1,5 @@
 % design of a general pseudolite pulsing scheme
-% 仿真多序列相关函数
+% 仿真周期性伪随机脉冲序列的相关函数
 % 1. R_dirac(aNc+bdNc)
 % 2. R_p(aNc+bdNc)
 
@@ -14,7 +14,7 @@ k = 20;
 Ne = k*N;
 
 b = 0:N-1;
-a = 0:20;
+a = 0:9;
 
 len_a = length(a);
 R_dirac = zeros(N*len_a,1);
@@ -65,3 +65,5 @@ title('R-dirac')
 % figure
 % plot(R_p)
 % title('R_p')
+
+

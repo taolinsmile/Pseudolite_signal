@@ -14,7 +14,7 @@ k = 20;
 Ne = k*N;
 
 b = 0:N-1;
-a = 0:5;
+a = 0:10;
 
 len_a = length(a);
 R_dirac = zeros(N*len_a,1);
@@ -43,27 +43,33 @@ for j=1:len_a
         end
     end    
 end
-R_dirac = [R_dirac(end:2),R_dirac];    
-L = [L(end:2),L];
+% R_dirac = [R_dirac(end:-1:2); R_dirac];    
+% L = [-L(end:-1:2);L];
 figure
 plot(L/N,R_dirac)
 title('R-dirac')
 
-rectangle = zeros(Nc,1);
-% triangle = zeros(Nc,1);
+% rectangle = zeros(Nc,1);
+% Np = floor(d*Nc);
+% rectangle(1:Np) = 1;
+% figure
+% plot(rectangle)
+% title('rectangle')
+% 
+% triangle = 1/Np*conv(rectangle,rectangle,'full');
+% figure
+% plot(triangle)
+% title('triangle')
+% 
+% R_p = conv(R_dirac,triangle,'same');
+% figure
+% plot(R_p)
+% title('R_p')
 
-Np = floor(d*Nc);
-rectangle(1:Np) = 1;
+%% calculate PSD
+R_tmp = [R_dirac; R_dirac; R_dirac];
+P_tmp = fftshift(R_tmp);
 figure
-plot(rectangle)
-title('rectangle')
+plot(P_tmp)
+title('P-tmp')
 
-triangle = 1/Np*conv(rectangle,rectangle,'full');
-figure
-plot(triangle)
-title('triangle')
-
-R_p = conv(R_dirac,triangle,'full');
-figure
-plot(R_p)
-title('R_p')
